@@ -24,6 +24,7 @@ PayME SDK là bộ thư viện để các app có thể tương tá
 | Hằng số | Mã lỗi | Giải thích 
 | -------------- | ---------- | -------- |
 | `EXPIRED` | `401` | token hết hạn sử dụng |
+| `ACCOUNT_LOCK` | `405` | tài khoản bị khoá chủ động |
 | `NETWORK` | `-1` |  Kết nối mạng bị sự cố |
 | `SYSTEM` | `-2` |  Lỗi hệ thống |
 | `LIMIT` | `-3` |  Lỗi số dư không đủ để thực hiện giao dịch |
@@ -129,7 +130,7 @@ Có 2 trường hợp
 
 - Dùng để login lần đầu tiên ngay sau khi khởi tạo PayME.
 
-- Dùng khi accessToken hết hạn, khi gọi hàm của SDK mà trả về mã lỗi ERROR_CODE.EXPIRED, lúc này app cần gọi login lại để lấy accessToken dùng cho các chức năng khác.
+- Dùng khi accessToken hết hạn, khi gọi hàm của SDK mà trả về mã lỗi ERROR_CODE.EXPIRED hoặc ERROR_CODE.ACCOUNT_LOCK, lúc này app cần gọi login lại để lấy accessToken dùng cho các chức năng khác.
 
 Sau khi gọi login() thành công rồi thì mới gọi các chức năng khác của SDK ( openWallet, pay, ... )
 
@@ -552,6 +553,7 @@ refExpoPaymeSDK.current.getWalletInfo(
 | ATM  | Thanh toán thẻ ATM Nội địa |
 | MANUAL_BANK  | Thanh toán chuyển khoản ngân hàng |
 | CREDIT  | Thanh toán thẻ tín dụng |
+| VIET_QR  | Thanh toán VietQR |
 
 ## License
 Copyright 2020 @ [PayME](payme.vn)
