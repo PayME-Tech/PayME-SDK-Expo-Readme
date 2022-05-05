@@ -22,6 +22,7 @@ PayME SDK is a set of libraries for apps to interact with PayME Platform. PayME 
 | Constant | Error Code | Explanation
 | -------------- | ---------- | -------- |
 | `EXPIRED` | `401` | token expires |
+| `ACCOUNT_LOCK` | `405` | actively locked account |
 | `NETWORK` | `-1` | Network connection problem |
 | `SYSTEM` | `-2` | System Error |
 | `LIMIT` | `-3` | Error of insufficient balance to make a transaction |
@@ -100,7 +101,7 @@ There are 2 cases
 
 - Used to login for the first time immediately after initializing PayME.
 
-- Used when the accessToken expires, when calling the SDK function that returns the error code ERROR_CODE.EXPIRED, now the app needs to call login again to get the accessToken for other functions.
+- Used when the accessToken expires, when calling the SDK function that returns the error code ERROR_CODE.EXPIRED or ERROR_CODE.ACCOUNT_LOCK, now the app needs to call login again to get the accessToken for other functions.
 
 After calling login() successfully, then call other functions of the SDK ( openWallet, pay, ... )
 
@@ -511,6 +512,7 @@ refExpoPaymeSDK.current.getWalletInfo(
 | ATM | Domestic ATM card payment |
 | MANUAL_BANK | Bank transfer payment |
 | CREDIT | Credit card payments |
+| VIET_QR | VietQR payments |
 
 ## License
 Copyright 2020 @ [PayME](payme.vn)
